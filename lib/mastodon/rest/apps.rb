@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mastodon/rest/utils'
 require 'mastodon/app'
 
@@ -13,7 +15,13 @@ module Mastodon
       # @param website [String]
       # @return [Mastodon::App]
       def create_app(name, redirect_uri, scopes = 'read', website = nil)
-        perform_request_with_object(:post, '/api/v1/apps', { client_name: name, redirect_uris: redirect_uri, scopes: scopes, website: website }, Mastodon::App)
+        perform_request_with_object(:post, '/api/v1/apps',
+                                    {
+                                      client_name: name,
+                                      redirect_uris: redirect_uri,
+                                      scopes: scopes,
+                                      website: website
+                                    }, Mastodon::App)
       end
     end
   end

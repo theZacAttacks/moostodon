@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mastodon/account'
 require 'mastodon/entities/media'
 require 'mastodon/entities/mention'

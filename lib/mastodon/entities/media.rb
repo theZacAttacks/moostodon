@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Mastodon
   module Entities
+    # Media parts of a toot, like pictures or videos.
     class Media < Mastodon::Base
       # @!attribute [r] id
       #   @return [Integer]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mastodon/rest/statuses'
 require 'mastodon/rest/accounts'
 require 'mastodon/rest/timelines'

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Mastodon
   module Entities
+    # The application a toot was sent by.
     class App < Mastodon::Base
       # @!attribute [r] name
       #   @return [String]

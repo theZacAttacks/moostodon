@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Mastodon::REST::Statuses do
@@ -40,7 +42,7 @@ describe Mastodon::REST::Statuses do
         opts = {
           :in_reply_to_id => nil,
           'media_ids[]' => nil,
-          :visibility => nil,
+          :visibility => nil
         }.merge(opts)
 
         expect(@client).to receive(:perform_request_with_object).with(:post, '/api/v1/statuses', opts, Mastodon::Status)
@@ -84,7 +86,7 @@ describe Mastodon::REST::Statuses do
     it 'returns a status' do
       status = @client.status(35_768)
       expect(status).to be_a Mastodon::Status
-      expect(status.content).to match(/youtu\.be\/HBBwXAPNLr0/)
+      expect(status.content).to match(%r{youtu\.be\/HBBwXAPNLr0})
       expect(status.account.username).to eq 'Gargron'
     end
   end

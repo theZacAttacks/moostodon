@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mastodon
   class Account < Mastodon::Base
     # @!attribute [r] id

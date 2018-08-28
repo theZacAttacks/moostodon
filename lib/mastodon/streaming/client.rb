@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'http/request'
 require 'mastodon/client'
 require 'mastodon/streaming/connection'
@@ -7,14 +9,17 @@ require 'mastodon/streaming/response'
 
 module Mastodon
   module Streaming
+    # Streaming client class, to handle all streaming purposes.
     class Client < Mastodon::Client
       attr_writer :connection
 
       # Initializes a new Client object
       #
       # @param options [Hash] A customizable set of options.
-      # @option options [String] :tcp_socket_class A class that Connection will use to create a new TCP socket.
-      # @option options [String] :ssl_socket_class A class that Connection will use to create a new SSL socket.
+      # @option options [String] :tcp_socket_class A class that Connection will
+      #  use to create a new TCP socket.
+      # @option options [String] :ssl_socket_class A class that Connection will
+      #  use to create a new SSL socket.
       # @return [Mastodon::Streaming::Client]
       def initialize(options = {})
         super
@@ -24,14 +29,16 @@ module Mastodon
 
       # Streams messages for a single user
       #
-      # @yield [Mastodon::Status, Mastodon::Notification, Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
       def user(options = {}, &block)
         stream('user', options, &block)
       end
 
       # Returns statuses that contain the specified hashtag
       #
-      # @yield [Mastodon::Status, Mastodon::Notification, Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
       def hashtag(tag, options = {}, &block)
         options['tag'] = tag
         stream('hashtag', options, &block)
@@ -39,14 +46,16 @@ module Mastodon
 
       # Returns all public statuses
       #
-      # @yield [Mastodon::Status, Mastodon::Notification, Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
       def firehose(options = {}, &block)
         stream('public', options, &block)
       end
 
       #
       # Calls an arbitrary streaming endpoint and returns the results
-      # @yield [Mastodon::Status, Mastodon::Notification, Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
       def stream(path, options = {}, &block)
         request(:get, "/api/v1/streaming/#{path}", options, &block)
       end
@@ -71,11 +80,15 @@ module Mastodon
 
         headers = Mastodon::Headers.new(self).request_headers
 
-        request = HTTP::Request.new(verb: method, uri: uri + '?' + to_url_params(params), headers: headers)
+        request = HTTP::Request.new(verb: method,
+                                    uri: "#{uri}?#{to_url_params(params)}",
+                                    headers: headers)
         response = Streaming::Response.new do |type, data|
-          if item = Streaming::MessageParser.parse(type, data) # rubocop:disable AssignmentInCondition
+          # rubocop:disable AssignmentInCondition
+          if item = Streaming::MessageParser.parse(type, data)
             yield(item)
           end
+          # rubocop:enable AssignmentInCondition
         end
         @connection.stream(request, response)
       end

@@ -1,24 +1,31 @@
+# frozen_string_literal: true
+
 require 'http/parser'
 require 'openssl'
 require 'resolv'
 
 module Mastodon
   module Streaming
+    # Socket/Connection handler.
     class Connection
       attr_reader :tcp_socket_class, :ssl_socket_class
 
       def initialize(options = {})
         @tcp_socket_class = options.fetch(:tcp_socket_class) { TCPSocket }
-        @ssl_socket_class = options.fetch(:ssl_socket_class) { OpenSSL::SSL::SSLSocket }
-        @using_ssl        = options.fetch(:using_ssl)        { false }
+        @ssl_socket_class = options.fetch(:ssl_socket_class) do
+          OpenSSL::SSL::SSLSocket
+        end
+        @using_ssl = options.fetch(:using_ssl) { false }
       end
 
       def stream(request, response)
         client = connect(request)
         request.stream(client)
-        while body = client.readpartial(1024) # rubocop:disable AssignmentInCondition
+        # rubocop:disable AssignmentInCondition
+        while body = client.readpartial(1024)
           response << body
         end
+        # rubocop:enable AssignmentInCondition
       end
 
       def connect(request)

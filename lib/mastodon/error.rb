@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Mastodon
+  # General error class for Mastodon.
   class Error < StandardError
     ClientError         = Class.new(self)
     BadRequest          = Class.new(ClientError)
@@ -22,7 +25,7 @@ module Mastodon
       500 => Mastodon::Error::InternalServerError,
       502 => Mastodon::Error::BadGateway,
       503 => Mastodon::Error::ServiceUnavailable,
-      504 => Mastodon::Error::GatewayTimeout,
+      504 => Mastodon::Error::GatewayTimeout
     }.freeze
 
     class << self

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'buftok'
 require 'http'
 require 'json'
@@ -5,6 +7,7 @@ require 'mastodon/error'
 
 module Mastodon
   module Streaming
+    # When someone responses to toots.
     class Response
       # Initializes a new Response object
       #

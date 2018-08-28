@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mastodon/rest/utils'
 require 'mastodon/account'
 
@@ -9,7 +11,8 @@ module Mastodon
       # Get "who to follow" suggestions for authenticated user
       # @return [Mastodon::Collection<Mastodon::Account>]
       def suggestions
-        perform_request_with_collection(:get, '/api/v1/accounts/suggestions', {}, Mastodon::Account)
+        perform_request_with_collection(:get, '/api/v1/accounts/suggestions',
+                                        {}, Mastodon::Account)
       end
     end
   end

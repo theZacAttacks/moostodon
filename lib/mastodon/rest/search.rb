@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mastodon/rest/utils'
 require 'mastodon/status'
 
@@ -15,10 +17,11 @@ module Mastodon
       #   will do a local account and hashtag search.
       def search(query, options = {})
         opts = {
-          q: query,
+          q: query
         }.merge(options)
 
-        perform_request_with_object(:get, '/api/v1/search', opts, Mastodon::Results)
+        perform_request_with_object(:get, '/api/v1/search', opts,
+                                    Mastodon::Results)
       end
     end
   end

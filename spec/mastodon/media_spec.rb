@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Mastodon::Media do
@@ -7,7 +9,7 @@ describe Mastodon::Media do
       'type' => 'image',
       'url' => 'http://site.com/system/media_attachments/files/000/000/004/original/4703eb0f77a3d9dd.png?1491720313',
       'preview_url' => 'http://site.com/system/media_attachments/files/000/000/004/small/4703eb0f77a3d9dd.png?1491720313',
-      'text_url' => 'http://site.com/media/3srFLJIxDRROiMzvmUk',
+      'text_url' => 'http://site.com/media/3srFLJIxDRROiMzvmUk'
     }
   end
   subject { Mastodon::Media.new(attrs) }

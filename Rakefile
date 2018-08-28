@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler'
 Bundler::GemHelper.install_tasks
 
@@ -20,4 +22,4 @@ Yardstick::Rake::Verify.new do |verify|
   verify.threshold = 59.0
 end
 
-task default: [:spec, :rubocop, :verify_measurements]
+task default: %i[spec rubocop verify_measurements]

@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Mastodon
+  # Relationships. Purpose still to be found out (by Maxine Michalski)
   class Relationship < Mastodon::Base
     # @!attribute [r] id
     #   @return [String] Account ID

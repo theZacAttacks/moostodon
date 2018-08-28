@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Mastodon
   module Entities
+    # When talking about another user.
     class Mention < Mastodon::Base
       # @!attribute [r] id
       #   @return [String] Account ID

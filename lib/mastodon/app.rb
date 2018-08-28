@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mastodon
   class App < Mastodon::Base
     # @!attribute [r] client_id

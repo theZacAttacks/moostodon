@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'addressable/uri'
 require 'http'
 require 'oj'
@@ -14,27 +16,38 @@ module Mastodon
         @headers        = Mastodon::Headers.new(@client).request_headers
         @path           = @uri.path
         @options        = options
-        @headers        = @options.delete(:headers).merge @headers if @options.is_a?(Hash) && @options[:headers]
+        # rubocop:disable GuardClause
+        if @options.is_a?(Hash) && @options[:headers]
+          @headers = @options.delete(:headers).merge @headers
+        end
+        # rubocop:enable GuardClause
       end
 
       def perform
         options_key = @request_method == :get ? :params : :form
-        response    = http_client.headers(@headers).public_send(@request_method, @uri.to_s, options_key => @options)
+        response = http_client.headers(@headers)
+                              .public_send(@request_method, @uri.to_s,
+                                           options_key => @options)
 
         STDERR.puts response.body if ENV['DEBUG'] == 'true'
 
-        fail_or_return(response.code, response.body.empty? ? '' : Oj.load(response.to_s, mode: :null))
+        r_body = response.body.empty? ? '' : Oj.load(response.to_s, mode: :null)
+        fail_or_return(response.code, r_body)
       end
 
       private
 
       def fail_or_return(code, body)
-        raise Mastodon::Error::ERRORS[code].from_response(body) if Mastodon::Error::ERRORS.include?(code)
+        if Mastodon::Error::ERRORS.include?(code)
+          raise Mastodon::Error::ERRORS[code].from_response(body)
+        end
         body
       end
 
       def http_client
-        HTTP.timeout(:per_operation, connect: @client.timeout[:connect], read: @client.timeout[:read], write: @client.timeout[:write])
+        HTTP.timeout(:per_operation, connect: @client.timeout[:connect],
+                                     read: @client.timeout[:read],
+                                     write: @client.timeout[:write])
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mastodon
   class Card < Mastodon::Base
     # @!attribute [r] url
@@ -29,7 +31,7 @@ module Mastodon
                        :title,
                        :description,
                        :image,
-                       :type
+                       :type,
                        :author_name,
                        :author_url,
                        :provider_name,

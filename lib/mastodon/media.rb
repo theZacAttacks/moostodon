@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mastodon
   class Media < Mastodon::Base
     # @!attribute [r] id
@@ -11,7 +13,8 @@ module Mastodon
     # @!attribute [r] preview_url
     #   @return [String] URL to preview image
     # @!attribute [r] text_url
-    #   @return [String] URL that can be put into status body and will redirect to the status/media
+    #   @return [String] URL that can be put into status body and will
+    #     redirect to the status/media
     # @!attribute [r] meta
     #   @return [Hash]
     # @!attribute [r] description

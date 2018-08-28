@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mastodon
   class Instance < Mastodon::Base
     # @!attribute [r] uri

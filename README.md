@@ -35,3 +35,8 @@ If you need to get an access token, you must first ensure that you have the clie
     client.create_app('My Ruby App', 'http://mywebsite.com/callback')
 
 You can then use the client ID and secret in a standard OAuth 2 authorization flow.
+
+## Semantic Versioning
+
+This project uses Semantic Versioning v2.0. This means the best to integrate it
+into your project, is via pessimistic version control '~> 1.0'.

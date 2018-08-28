@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 module Mastodon
+  # Sets version information for this gem.
   module Version
     module_function
 
     def major
-      1
+      0
     end
 
     def minor
-      2
+      1
     end
 
     def patch
