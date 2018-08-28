@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'mastodon/account'
-require 'mastodon/entities/media'
-require 'mastodon/entities/mention'
-require 'mastodon/entities/app'
-require 'mastodon/entities/hashtag'
-require 'mastodon/emoji'
+require_relative 'account'
+require_relative 'entities/media'
+require_relative 'entities/mention'
+require_relative 'entities/app'
+require_relative 'entities/hashtag'
+require_relative 'emoji'
 
 module Mastodon
   class Status < Mastodon::Base

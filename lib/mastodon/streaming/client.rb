@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'http/request'
-require 'mastodon/client'
-require 'mastodon/streaming/connection'
-require 'mastodon/streaming/deleted_status'
-require 'mastodon/streaming/message_parser'
-require 'mastodon/streaming/response'
+require_relative '../client'
+require_relative '../streaming/connection'
+require_relative '../streaming/deleted_status'
+require_relative '../streaming/message_parser'
+require_relative '../streaming/response'
 
 module Mastodon
   module Streaming

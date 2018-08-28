@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'mastodon/rest/utils'
-require 'mastodon/app'
+require_relative '../rest/utils'
+require_relative '../app'
 
 module Mastodon
   module REST

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'mastodon/client'
-require 'mastodon/rest/api'
+require_relative '../client'
+require_relative 'api'
 
 module Mastodon
   module REST

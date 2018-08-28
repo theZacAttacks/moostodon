@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'addressable/uri'
-require 'mastodon/base'
-require 'mastodon/collection'
-require 'mastodon/results'
-require 'mastodon/rest/client'
-require 'mastodon/streaming/client'
+require_relative 'mastodon/base'
+require_relative 'mastodon/collection'
+require_relative 'mastodon/results'
+require_relative 'mastodon/rest/client'
+require_relative 'mastodon/streaming/client'

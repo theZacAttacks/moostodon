@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'mastodon/version'
+require_relative 'version'
 
 module Mastodon
   class Client

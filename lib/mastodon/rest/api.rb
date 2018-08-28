@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'mastodon/rest/statuses'
-require 'mastodon/rest/accounts'
-require 'mastodon/rest/timelines'
-require 'mastodon/rest/notifications'
-require 'mastodon/rest/search'
-require 'mastodon/rest/relationships'
-require 'mastodon/rest/media'
-require 'mastodon/rest/suggestions'
-require 'mastodon/rest/apps'
-require 'mastodon/rest/instances'
+require_relative 'statuses'
+require_relative 'accounts'
+require_relative 'timelines'
+require_relative 'notifications'
+require_relative 'search'
+require_relative 'relationships'
+require_relative 'media'
+require_relative 'suggestions'
+require_relative 'apps'
+require_relative 'instances'
 
 module Mastodon
   module REST

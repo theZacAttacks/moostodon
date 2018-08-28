@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'mastodon/account'
-require 'mastodon/status'
+require_relative 'account'
+require_relative 'status'
 
 module Mastodon
   class Results < Mastodon::Base

@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    moostodon (0.1.0)
+    moostodon (0.2.0)
       addressable (~> 2.5)
-      buftok
+      buftok (~> 0)
       http (~> 3.0)
       oj (~> 3.3)
 
@@ -108,4 +108,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.1
+   1.16.4

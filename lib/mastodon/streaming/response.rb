@@ -3,7 +3,7 @@
 require 'buftok'
 require 'http'
 require 'json'
-require 'mastodon/error'
+require_relative '../error'
 
 module Mastodon
   module Streaming

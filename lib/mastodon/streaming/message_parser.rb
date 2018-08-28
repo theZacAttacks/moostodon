@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'mastodon/status'
-require 'mastodon/streaming/deleted_status'
+require_relative '../status'
+require_relative '../streaming/deleted_status'
 
 module Mastodon
   module Streaming

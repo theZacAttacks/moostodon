@@ -3,8 +3,8 @@
 require 'addressable/uri'
 require 'http'
 require 'oj'
-require 'mastodon/error'
-require 'mastodon/headers'
+require_relative '../error'
+require_relative '../headers'
 
 module Mastodon
   module REST

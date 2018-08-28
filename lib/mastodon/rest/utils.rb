@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'mastodon/rest/request'
+require_relative 'request'
 
 module Mastodon
   module REST
