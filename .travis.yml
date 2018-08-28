@@ -1,21 +1,17 @@
 language: ruby
 cache: bundler
-
 notifications:
   email: false
-
 rvm:
   - 2.3
   - 2.4
   - 2.5
   - ruby-head
-
-bundler_args: --without development --retry=3 --jobs=3
-
+bundler_args: "--without development --retry=3 --jobs=3"
 script: bundle exec rspec
 deploy:
   provider: rubygems
   api_key:
-    secure: cHSnAlPwtzHfR2QP9W7mS/NnoDdbscpsqqsZESn/6jCSeVkvHI76YjjhxHP0lxh1QK/zlvyTNS9Z9mketFeVNEoXIDGMGC2KTAmLXq9fZ7G4EUN+uP48/TwOjbrHRe494KLyWXdvWFDesDOzmmDsnYeovClOTgx0Uws+tQCO/0mTomh7jGxCC8qKmgaZ9jCjsAOh5nZA2Hqb3rZQ1pbo9fIZICRB6et7oHcX8sR7dnI16xp9VwRPm4rj32apJRaxRS9t+q4oWfCEs4c58nz96LDvmAM3XGyrfeCRU7iaNb03uHbEjA7MBVNIp4ebMXNT9a1nycCV5TwIc5xjTCiYcOGgANvL+Sdyvsb+hTA7WaJ1U17WEmcUw1CEt77nx+lE9qXt5LG9mJI4vFIfSffjAa+P7+x2HeDQzI3mntJBiwGNNC9fdZ4TnVEZR+o4vDpehNXrucUwnSxJ8HtmGs1QjKEYhE8ty12gnHnMfVpRrJPDH1Igm0Xp+tZWuQ9tokfxqXiryxFir2PXjYEXsUCHtfeYokGEdCj+zzjdo2zy8RoSY8V1s/4zoU1MF4F1zwqgq3ZghVzB5LAVYb0uqJSF9i2KSM+Jyz9jSX99Ge4kq6AlYfqysknat5TsDfaVhZ6PS1gLlM1eZAB9IUMMBjlNfiWRe83wEoGSTckQ+y3OYAI=
+    secure: tLRTsoCXlc73apqNCXoYUzipKSjyQ3+oJeifAEXlV33p9sjMVv0V6y1lxrKC6itGshbEnlGWl7e6Zq+/Hk/FGcrSsH68UXfH9HfZxOnZExpMp3wuECtB5/5vnz0iyVCnSZXDQd8p7Jp8n8wTAtcd0rxghO4/wh1/w0Qd7rPFsvwkX+PHf29rMVXAkOBTPinU2qnzXO56fb86CVA/x5LhVgJOUXxEDDGiiETuudxBjnIBBhTc2ctLKi2mMRUZMBGbfVBdT7XseJuq8zq+gLRoJRDTHLHzZm3eiudNa5dhCivFYdqOiUVQ3bE7DKmEW9TlmO7tYymFaF+VBGI7FFyq5mhF8wP9I0aundrD6fS7ZzqrTaFbGm4xgMlAgni6vGojqcGbbscmXJ+RdWsvaYhf8XqR8U/d7II5JGUtOaucvJ7GVp5VW3L4kpjnYKVCsmrhQUl1r4Zu8YO9s9IuUZPiAkPfJTVz3rqrIzk1zMj394F2r+OiULs2+o/bGUII6ACC57Wq5TuyPqQMeSywYcve6hFECNfh5Vs+wc/laqTcMyVzVs/0rhpjzGTFK2dF2LHgdHqxukjfKcnSqAlUPc489HUsz7jFY4wZjUTZJehHDzCxdJ80SK66J1W855EEkQDkRDHxc2+of+6o3IwALftTpFVd81zPlGsJ0dftCgSvJBQ=
   on:
     tags: true
