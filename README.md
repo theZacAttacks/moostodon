@@ -1,23 +1,28 @@
 Mastodon API Ruby Gem
 =====================
 
-[![Gem Version](http://img.shields.io/gem/v/mastodon-api.svg)][gem]
-[![Build Status](http://img.shields.io/travis/tootsuite/mastodon-api.svg)][travis]
-[![Dependency Status](http://img.shields.io/gemnasium/tootsuite/mastodon-api.svg)][gemnasium]
+[![Gem Version](http://img.shields.io/gem/v/moostodon.svg)][gem]
+[![Build Status](http://img.shields.io/travis/maxine-red/moostodon.svg)][travis]
+![Github Release Date](https://img.shields.io/github/release-data/maxine-red/moostodon.svg)
 
-[gem]: https://rubygems.org/gems/mastodon-api
-[travis]: https://travis-ci.org/tootsuite/mastodon-api
-[gemnasium]: https://gemnasium.com/tootsuite/mastodon-api
+[gem]: https://rubygems.org/gems/moostodon
+[travis]: https://travis-ci.org/maxine-red/moostodon
 
 A ruby interface for the [Mastodon](https://github.com/tootsuite/mastodon) API.
 
 ## Installation
 
-    gem 'mastodon-api', require: 'mastodon'
+    gem install moostodon
+
+or
+
+    gem 'moostodon', require: 'moostodon'
 
 ## Documentation
 
-All the documentation is available on [RubyDoc](http://www.rubydoc.info/gems/mastodon-api/Mastodon/REST/API).
+All the documentation is available on [RubyDoc](http://www.rubydoc.info/gems/moostodon/Mastodon/REST/API).
+
+This gem is meant as a plug-and-play replacement for [mastodon-api](https://github.com/tootsuite/mastodon-api).
 
 ## Usage
 
