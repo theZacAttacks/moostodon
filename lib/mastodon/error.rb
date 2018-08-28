@@ -7,6 +7,7 @@ module Mastodon
     BadRequest          = Class.new(ClientError)
     Unauthorized        = Class.new(ClientError)
     Forbidden           = Class.new(ClientError)
+    NotFound            = Class.new(ClientError)
     UnprocessableEntity = Class.new(ClientError)
     TooManyRequests     = Class.new(ClientError)
 
@@ -20,6 +21,7 @@ module Mastodon
       400 => Mastodon::Error::BadRequest,
       401 => Mastodon::Error::Unauthorized,
       403 => Mastodon::Error::Forbidden,
+      404 => Mastodon::Error::NotFound,
       422 => Mastodon::Error::UnprocessableEntity,
       429 => Mastodon::Error::TooManyRequests,
       500 => Mastodon::Error::InternalServerError,
