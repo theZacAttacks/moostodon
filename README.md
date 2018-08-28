@@ -3,7 +3,7 @@ Mastodon API Ruby Gem
 
 [![Gem Version](http://img.shields.io/gem/v/moostodon.svg)][gem]
 [![Build Status](http://img.shields.io/travis/maxine-red/moostodon.svg)][travis]
-![Github Release Date](https://img.shields.io/github/release-data/maxine-red/moostodon.svg)
+![Github Release Date](https://img.shields.io/github/release-date/maxine-red/moostodon.svg)
 
 [gem]: https://rubygems.org/gems/moostodon
 [travis]: https://travis-ci.org/maxine-red/moostodon
