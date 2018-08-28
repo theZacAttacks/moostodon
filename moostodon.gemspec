@@ -10,14 +10,15 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/maxine-red/moostodon'
   spec.email         = 'maxine@furfind.net'
   spec.authors       = ['Maxine Michalski']
-  spec.summary       = spec.description
+  spec.summary       = 'A ruby interface to the Mastodon API, based on'\
+                       ' mastodon-api.'
   spec.licenses      = %w[MIT]
   spec.files         = %w[moostodon.gemspec] + Dir['lib/**/*.rb']
   spec.require_paths = %w[lib]
   spec.version       = Mastodon::Version
 
   spec.add_dependency 'addressable', '~> 2.5'
-  spec.add_dependency 'buftok'
+  spec.add_dependency 'buftok', '~> 0'
   spec.add_dependency 'http', '~> 3.0'
   spec.add_dependency 'oj', '~> 3.3'
 
