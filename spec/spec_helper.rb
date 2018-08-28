@@ -6,7 +6,7 @@ SimpleCov.start do
   add_filter '/spec/'
 end
 
-require 'mastodon'
+require 'moostodon'
 require 'rspec'
 require 'timecop'
 require 'webmock/rspec'

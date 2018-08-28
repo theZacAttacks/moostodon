@@ -2,17 +2,17 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mastodon/version'
+require_relative 'lib/mastodon/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'moostodon'
   spec.description   = 'A ruby interface to the Mastodon API'
-  spec.homepage      = 'https://github.com/tootsuite/mastodon-api'
-  spec.email         = 'eugen@zeonfederated.com'
-  spec.authors       = ['Eugen Rochko', 'Maxine Michalski']
+  spec.homepage      = 'https://github.com/maxine-red/moostodon'
+  spec.email         = 'maxine@furfind.net'
+  spec.authors       = ['Maxine Michalski']
   spec.summary       = spec.description
   spec.licenses      = %w[MIT]
-  spec.files         = %w[mastodon.gemspec] + Dir['lib/**/*.rb']
+  spec.files         = %w[moostodon.gemspec] + Dir['lib/**/*.rb']
   spec.require_paths = %w[lib]
   spec.version       = Mastodon::Version
 
