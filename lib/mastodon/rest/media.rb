@@ -13,8 +13,10 @@ module Mastodon
       #   upload. Will be converted to HTTP::FormData::File before upload
       # @param description [String] A text description of the image, to be
       #   along with the image.
+      # @param focus [Array] Array of floats that set the focal point of
+      #   the image
       # @return [Mastodon::Media]
-      def upload_media(file, description = nil)
+      def upload_media(file, description = nil, *focus)
         file = if file.is_a?(HTTP::FormData::File)
                  file
                else
@@ -22,6 +24,7 @@ module Mastodon
                end
         payload = { file: file }
         payload[:description] = description unless description.nil?
+        payload[:focus] = focus.collect{|f| f.to_s}.join(',') unless focus.nil?
         perform_request_with_object(:post, '/api/v1/media', payload,
                                     Mastodon::Media)
       end
