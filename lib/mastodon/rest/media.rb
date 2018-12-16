@@ -37,6 +37,18 @@ module Mastodon
                                     { description: description },
                                     Mastodon::Media)
       end
+      
+      # Update a media focal point, can only be updated while it's not
+      #   associated to a status
+      # @param media_id [Integer] Id of the media, returned by upload_media
+      # @param focal_x [Float] X position of the focus
+      # @param focal_y [Float] Y position of the focus
+      # @return [Mastodon::Media]
+      def update_media_focus(media_id, focus_x, focus_y)
+        perform_request_with_object(:put, "/api/v1/media/#{media_id}",
+                                    { focus: "#{focus_x},#{focus_y}" },
+                                    Mastodon::Media)
+      end
     end
   end
 end
