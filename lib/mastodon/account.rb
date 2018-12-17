@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'field'
+
 module Mastodon
   class Account < Mastodon::Base
     # @!attribute [r] id
@@ -34,6 +36,8 @@ module Mastodon
     #   @return [Boolean]
     # @!attribute [r] moved
     #   @return [Mastodon::Account]
+    # @!attribute [r] fields
+    #   @return [Mastodon::Collection<Mastodon::Field>]
 
     normal_attr_reader :id,
                        :username,
@@ -53,6 +57,8 @@ module Mastodon
     predicate_attr_reader :locked
 
     object_attr_reader :moved, Mastodon::Account
+
+    collection_attr_reader :fields, Mastodon::Field
 
     def initialize(attributes = {})
       attributes.fetch('id')
