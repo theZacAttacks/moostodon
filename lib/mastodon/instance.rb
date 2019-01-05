@@ -14,12 +14,18 @@ module Mastodon
     #   @return [String]
     # @!attribute [r] urls
     #   @return [Hash]
+    # @!attribute [r] thumbnail
+    #   @return [String]
+    # @!attribute [r] max_toot_chars
+    #   @return [Integer]
 
     normal_attr_reader :uri,
                        :title,
                        :description,
                        :email,
                        :version,
-                       :urls
+                       :urls,
+                       :thumbnail,
+                       :max_toot_chars
   end
 end
