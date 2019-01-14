@@ -35,6 +35,13 @@ module Mastodon
         stream('user', options, &block)
       end
 
+      # Streams posts from the local instance
+      #
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      def local(options = {}, &block)
+        stream('public/local', options, &block)
+      end
       # Returns statuses that contain the specified hashtag
       #
       # @yield [Mastodon::Status, Mastodon::Notification,
