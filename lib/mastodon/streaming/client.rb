@@ -52,6 +52,15 @@ module Mastodon
         stream('hashtag', options, &block)
       end
 
+      # Returns local statuses that contain the specified hashtag
+      #
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      def local_hashtag(tag, options = {}, &block)
+        options['tag'] = tag
+        stream('hashtag/local', options, &block)
+      end
+
       # Returns statuses from the specified list
       #
       # @yield [Mastodon::Status, Mastodon::Notification,
