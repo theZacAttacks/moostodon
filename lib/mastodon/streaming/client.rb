@@ -56,8 +56,8 @@ module Mastodon
       #
       # @yield [Mastodon::Status, Mastodon::Notification,
       # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
-      def list(name, options = {}, &block)
-        options['list'] = name
+      def list(id, options = {}, &block)
+        options['list'] = id
         stream('list', options, &block)
       end
 
