@@ -24,8 +24,11 @@ module Mastodon
       #   the user's avatar
       # @option options header [String] A base64 encoded image to display as
       #   the user's header image
+      # @option options fields [Array<Hash>] Array of hashes representing
+      #   fields to be set
       # @return [Mastodon::Account]
       def update_credentials(opts = {})
+        opts['fields_attributes[]'] ||= opts.delete(:fields)
         perform_request_with_object(:patch,
                                     '/api/v1/accounts/update_credentials',
                                     opts, Mastodon::Account)
