@@ -41,15 +41,23 @@ module Mastodon
                                     options, Mastodon::List)
       end
 
+      # Gets the accounts that are in a list
+      # @param id [Integer]
+      # @param options [Hash]
+      # @return [Mastodon::Collection<Mastodon::Account>]
       def list_accounts(id, options = {})
         perform_request_with_collection(:get, "/api/v1/lists/#{id}/accounts",
                                         options, Mastodon::List)
       end
 
+      # Gets the lists this account is a part of
+      # @param id [Integer]
+      # @return [Mastodon::Collection<Mastodon::List>]
       def account_lists(id)
         perform_request_with_collection(:get, "/api/v1/accounts/#{id}/lists",
                                         {}, Mastodon::List)
       end
+
       # Delete a list
       # @param id [Integer]
       # @return [Boolean]
