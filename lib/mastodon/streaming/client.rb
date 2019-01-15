@@ -70,6 +70,14 @@ module Mastodon
         stream('list', options, &block)
       end
 
+      # Returns direct messages for the authenticated user
+      #
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      def direct(options = {}, &block)
+        stream('direct', options, &block)
+      end
+
       # Returns all public statuses
       #
       # @yield [Mastodon::Status, Mastodon::Notification,
