@@ -10,6 +10,7 @@ require_relative 'media'
 require_relative 'suggestions'
 require_relative 'apps'
 require_relative 'instances'
+require_relative 'lists'
 
 module Mastodon
   module REST
@@ -24,6 +25,7 @@ module Mastodon
       include Mastodon::REST::Suggestions
       include Mastodon::REST::Apps
       include Mastodon::REST::Instances
+      include Mastodon::REST::Lists
     end
   end
 end
