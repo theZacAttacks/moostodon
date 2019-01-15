@@ -35,6 +35,14 @@ module Mastodon
         stream('user', options, &block)
       end
 
+      # Streams posts from the local instance
+      #
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      def local(options = {}, &block)
+        stream('public/local', options, &block)
+      end
+
       # Returns statuses that contain the specified hashtag
       #
       # @yield [Mastodon::Status, Mastodon::Notification,
@@ -42,6 +50,32 @@ module Mastodon
       def hashtag(tag, options = {}, &block)
         options['tag'] = tag
         stream('hashtag', options, &block)
+      end
+
+      # Returns local statuses that contain the specified hashtag
+      #
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      def local_hashtag(tag, options = {}, &block)
+        options['tag'] = tag
+        stream('hashtag/local', options, &block)
+      end
+
+      # Returns statuses from the specified list
+      #
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      def list(id, options = {}, &block)
+        options['list'] = id
+        stream('list', options, &block)
+      end
+
+      # Returns direct messages for the authenticated user
+      #
+      # @yield [Mastodon::Status, Mastodon::Notification,
+      # Mastodon::Streaming::DeletedStatus] A stream of Mastodon objects.
+      def direct(options = {}, &block)
+        stream('direct', options, &block)
       end
 
       # Returns all public statuses

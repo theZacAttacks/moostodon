@@ -26,8 +26,13 @@ module Mastodon
       #   the user's header image
       # @option options bot [Boolean] A boolean indicating if this account
       #   is automated
+
       # @return [Mastodon::Account]
       def update_credentials(opts = {})
+        opts[:fields] and opts.delete(:fields).each_with_index { |f, i|
+          opts["fields_attributes[#{i}][name]"] = f[:name]
+          opts["fields_attributes[#{i}][value]"] = f[:value]
+        }
         perform_request_with_object(:patch,
                                     '/api/v1/accounts/update_credentials',
                                     opts, Mastodon::Account)
