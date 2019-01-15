@@ -25,9 +25,10 @@ module Mastodon
       end
 
       # Create a new list
-      # @param options [Hash]
+      # @param title [String]
       # @return [Mastodon::List]
-      def create_list(options = {})
+      def create_list(title)
+        options = { title: title }
         perform_request_with_object(:post, '/api/v1/lists',
                                     options, Mastodon::List)
       end
@@ -35,6 +36,7 @@ module Mastodon
       # Update a list
       # @param id [Integer]
       # @param options [Hash]
+      # @option options :title [String]
       # @return [Mastodon::List]
       def update_list(id, options = {})
         perform_request_with_object(:put, "/api/v1/lists/#{id}",
@@ -44,6 +46,7 @@ module Mastodon
       # Gets the accounts that are in a list
       # @param id [Integer]
       # @param options [Hash]
+      # @option options :limit [Integer]
       # @return [Mastodon::Collection<Mastodon::Account>]
       def list_accounts(id, options = {})
         perform_request_with_collection(:get, "/api/v1/lists/#{id}/accounts",
@@ -65,25 +68,25 @@ module Mastodon
         !perform_request(:delete, "/api/v1/lists/#{id}").nil?
       end
 
-      # Add accounts to a list
+      #   Add accounts to a list
       # @param id [Integer]
-      # @param options [Hash]
-      # @return [Mastodon::List]
-      def add_accounts(id, options = {})
-        options['account_ids[]'] ||= options.delete(:account_ids)
-        perform_request_with_object(:post, "/api/v1/lists/#{id}/accounts",
-                                    options, Mastodon::List)
+      # @param accounts [Array<Integer>]
+      def list_add_accounts(id, *accounts)
+        options = {}
+        options['account_ids[]'] = accounts
+        perform_request(:post, "/api/v1/lists/#{id}/accounts",
+                        options)
       end
 
-      # Remove accounts from a list
+      #   Add accounts to a list
       # @param id [Integer]
-      # @param options [Hash]
-      # @return [Mastodon::List]
-      def remove_accounts(id, options = {})
-        options['account_ids[]'] ||= options.delete(:account_ids)
-        perform_request_with_object(:delete, "/api/v1/lists/#{id}/accounts",
-                                    options, Mastodon::List)
-      end                                 
+      # @param accounts [Array<Integer>]
+      def list_remove_accounts(id, *accounts)
+        options = {}
+        options['account_ids[]'] = accounts
+        perform_request(:delete, "/api/v1/lists/#{id}/accounts",
+                        options)
+      end
     end
   end
 end
