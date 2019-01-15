@@ -28,7 +28,10 @@ module Mastodon
       #   fields to be set
       # @return [Mastodon::Account]
       def update_credentials(opts = {})
-        opts['fields_attributes[]'] ||= opts.delete(:fields)
+        opts[:fields] and opts.delete(:fields).each_with_index { |f, i|
+          opts["fields_attributes[#{i}][name]"] = f[:name]
+          opts["fields_attributes[#{i}][value]"] = f[:value]
+        }
         perform_request_with_object(:patch,
                                     '/api/v1/accounts/update_credentials',
                                     opts, Mastodon::Account)
