@@ -38,6 +38,8 @@ module Mastodon
     #   @return [Mastodon::Account]
     # @!attribute [r] fields
     #   @return [Mastodon::Collection<Mastodon::Field>]
+    # @!attribute [r] bot?
+    #   @return [Boolean]
 
     normal_attr_reader :id,
                        :username,
@@ -54,7 +56,7 @@ module Mastodon
                        :following_count,
                        :statuses_count
 
-    predicate_attr_reader :locked
+    predicate_attr_reader :locked, :bot
 
     object_attr_reader :moved, Mastodon::Account
 

@@ -24,6 +24,8 @@ module Mastodon
       #   the user's avatar
       # @option options header [String] A base64 encoded image to display as
       #   the user's header image
+      # @option options bot [Boolean] A boolean indicating if this account
+      #   is automated
       # @return [Mastodon::Account]
       def update_credentials(opts = {})
         perform_request_with_object(:patch,
