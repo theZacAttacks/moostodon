@@ -72,6 +72,13 @@ module Mastodon
                                     '/api/v1/follows', { uri: uri },
                                     Mastodon::Account)
       end
+
+      # Get user mutes
+      # @return [Mastodon::Collection<Mastodon::Account>]
+      def mutes
+        perform_request_with_collection(:get, '/api/v1/mutes',
+                                        {}, Mastodon::Account)
+      end
     end
   end
 end

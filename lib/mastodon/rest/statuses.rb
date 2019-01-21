@@ -112,6 +112,26 @@ module Mastodon
         perform_request_with_collection(:get, url, options, Mastodon::Status)
       end
 
+      # Mute thread
+      # @param id [Integer]
+      # @return [Mastodon::Status]
+      def mute_thread(id)
+        perform_request_with_object(:post,
+                                    "/api/v1/statuses/#{id}/mute",
+                                    {},
+                                    Mastodon::Status)
+      end
+
+      # Unmute thread
+      # @param id [Integer]
+      # @return [Mastodon::Status]
+      def unmute_thread(id)
+        perform_request_with_object(:post,
+                                    "/api/v1/statuses/#{id}/unmute",
+                                    {},
+                                    Mastodon::Status)
+      end
+
       private
 
       def normalize_status_params(*args)
