@@ -2,6 +2,7 @@
 
 require_relative '../rest/utils'
 require_relative '../account'
+require_relative '../relationship'
 
 module Mastodon
   module REST
@@ -71,6 +72,29 @@ module Mastodon
         perform_request_with_object(:post,
                                     '/api/v1/follows', { uri: uri },
                                     Mastodon::Account)
+      end
+
+      # Get account endorsements
+      # @return [Mastodon::Collection<Mastodon::Account>]
+      def endorsements
+        perform_request_with_collection(:get, '/api/v1/endorsements',
+                                        {}, Mastodon::Account)
+      end
+
+      # Add an endorsement
+      # @param id [Integer]
+      # @return [Mastodon::Relationship]
+      def add_endorsement(id)
+        perform_request_with_object(:post, "/api/v1/accounts/#{id}/pin",
+                                    {}, Mastodon::Relationship)
+      end
+
+      # Remove an endorsement
+      # @param id [Integer]
+      # @return [Mastodon::Relationship]
+      def remove_endorsement(id)
+        perform_request_with_object(:post, "/api/v1/accounts/#{id}/unpin",
+                                    {}, Mastodon::Relationship)
       end
     end
   end
