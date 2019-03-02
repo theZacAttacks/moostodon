@@ -74,6 +74,21 @@ module Mastodon
                                     Mastodon::Account)
       end
 
+      # Get user mutes
+      # @return [Mastodon::Collection<Mastodon::Account>]
+      def mutes
+        perform_request_with_collection(:get, '/api/v1/mutes',
+                                        {}, Mastodon::Account)
+      end
+
+      # Get user blocks
+      # @param options [Hash]
+      # @option options :limit [Integer]
+      # @return [Mastodon::Collection<Mastodon::Account>]
+      def blocks(options = {})
+        perform_request_with_collection(:get, '/api/v1/blocks',
+                                        options, Mastodon::Account)
+      end
       # Report an account
       # @param id [Integer]
       # @param options [Hash]
