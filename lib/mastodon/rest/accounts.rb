@@ -24,8 +24,9 @@ module Mastodon
       #   the user's avatar
       # @option options header [String] A base64 encoded image to display as
       #   the user's header image
-      # @option options fields [Array<Hash>] Array of hashes representing
-      #   fields to be set
+      # @option options bot [Boolean] A boolean indicating if this account
+      #   is automated
+
       # @return [Mastodon::Account]
       def update_credentials(opts = {})
         opts[:fields] and opts.delete(:fields).each_with_index { |f, i|
@@ -81,6 +82,28 @@ module Mastodon
       def report(id, options = {})
         options[:account_id] = id
         !perform_request(:post, '/api/v1/reports', options).nil?
+      end
+      # Gets follow requests
+      # @param options [Hash]
+      # @option options :limit [Integer]
+      # @return [Mastodon::Collection<Mastodon::Account>]
+      def follow_requests(options = {})
+        perform_request_with_collection(:get, '/api/v1/follow_requests',
+                                        options, Mastodon::Account)
+      end
+
+      # Accept a follow request
+      # @param id [Integer]
+      # @return [Boolean]
+      def accept_follow_request(id)
+        !perform_request(:post, "/api/v1/follow_requests/#{id}/authorize").nil?
+      end
+
+      # Reject follow request
+      # @param id [Integer]
+      # @return [Boolean]
+      def reject_follow_request(id)
+        !perform_request(:post, "/api/v1/follow_requests/#{id}/reject").nil?
       end
     end
   end
