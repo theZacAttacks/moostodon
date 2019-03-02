@@ -14,6 +14,14 @@ module Mastodon
         perform_request_with_collection(:get, '/api/v1/accounts/suggestions',
                                         {}, Mastodon::Account)
       end
+
+      # Remove account from suggestions
+      # @param id [Integer]
+      # @return [Boolean]
+      def remove_suggestion(id)
+        !perform_request(:delete,
+                         "/api/v1/suggestions/#{id}").nil?
+      end
     end
   end
 end
