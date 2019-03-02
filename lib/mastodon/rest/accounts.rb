@@ -73,6 +73,29 @@ module Mastodon
                                     '/api/v1/follows', { uri: uri },
                                     Mastodon::Account)
       end
+
+      # Gets follow requests
+      # @param options [Hash]
+      # @option options :limit [Integer]
+      # @return [Mastodon::Collection<Mastodon::Account>]
+      def follow_requests(options = {})
+        perform_request_with_collection(:get, '/api/v1/follow_requests',
+                                        options, Mastodon::Account)
+      end
+
+      # Accept a follow request
+      # @param id [Integer]
+      # @return [Boolean]
+      def accept_follow_request(id)
+        !perform_request(:post, "/api/v1/follow_requests/#{id}/authorize").nil?
+      end
+
+      # Reject follow request
+      # @param id [Integer]
+      # @return [Boolean]
+      def reject_follow_request(id)
+        !perform_request(:post, "/api/v1/follow_requests/#{id}/reject").nil?
+      end
     end
   end
 end
