@@ -74,6 +74,15 @@ module Mastodon
                                     Mastodon::Account)
       end
 
+      # Report an account
+      # @param id [Integer]
+      # @param options [Hash]
+      # @option options :status_ids [Array<Integer>]
+      # @option options :comment [String]
+      def report(id, options = {})
+        options[:account_id] = id
+        !perform_request(:post, '/api/v1/reports', options).nil?
+      end
       # Gets follow requests
       # @param options [Hash]
       # @option options :limit [Integer]
