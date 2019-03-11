@@ -6,6 +6,7 @@ require_relative 'entities/mention'
 require_relative 'entities/app'
 require_relative 'entities/hashtag'
 require_relative 'emoji'
+require_relative 'poll'
 
 module Mastodon
   class Status < Mastodon::Base
@@ -80,6 +81,7 @@ module Mastodon
     object_attr_reader :account, Mastodon::Account
     object_attr_reader :reblog, Mastodon::Status
     object_attr_reader :application, Mastodon::Entities::App
+    object_attr_reader :poll, Mastodon::Poll
 
     collection_attr_reader :media_attachments, Mastodon::Entities::Media
     collection_attr_reader :mentions, Mastodon::Entities::Mention
