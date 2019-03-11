@@ -4,7 +4,21 @@ require_relative 'polloption'
 
 module Mastodon
   class Poll < Mastodon::Base
-
+    # @!attribute [r] id
+    #   @return [String]
+    # @!attribute [r] expires_at
+    #   @return [String]
+    # @!attribute [r] votes_count
+    #   @return [Integer]
+    # @!attribute [r] expired?
+    #   @return [Boolean]
+    # @!attribute [r] multiple?
+    #   @return [Boolean]
+    # @!attribute [r] voted?
+    #   @return [Boolean]
+    # @!attribute [r] options
+    #   @return [Mastodon::Collection<Mastodon::PollOption>]
+    
     normal_attr_reader :id,
                        :expires_at,
                        :votes_count

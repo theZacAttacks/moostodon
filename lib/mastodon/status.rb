@@ -58,6 +58,8 @@ module Mastodon
     #   @return [Mastodon::Collection<Mastodon::Entities::Hashtag>]
     # @!attribute [r] emojis
     #   @return [Mastodon::Collection<Mastodon::Emoji>]
+    # @!attribute [r] poll
+    #   @return [Mastodon::Poll]
 
     normal_attr_reader :id,
                        :content,
