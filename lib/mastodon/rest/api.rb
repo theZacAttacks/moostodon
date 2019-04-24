@@ -11,6 +11,7 @@ require_relative 'suggestions'
 require_relative 'apps'
 require_relative 'instances'
 require_relative 'lists'
+require_relative 'filters'
 
 module Mastodon
   module REST
@@ -26,6 +27,7 @@ module Mastodon
       include Mastodon::REST::Apps
       include Mastodon::REST::Instances
       include Mastodon::REST::Lists
+      include Mastodon::REST::Filters
     end
   end
 end
