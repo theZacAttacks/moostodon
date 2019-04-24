@@ -19,6 +19,10 @@ module Mastodon
       self
     end
 
+    def empty?
+      size.zero?
+    end
+
     def size
       @collection.size
     end
