@@ -92,5 +92,9 @@ module Mastodon
       attributes.fetch('id')
       super
     end
+
+    def is_reblog?
+      !@attributes['reblog'].nil?
+    end
   end
 end

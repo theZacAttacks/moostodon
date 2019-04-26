@@ -4,6 +4,8 @@ require_relative 'field'
 
 module Mastodon
   class Account < Mastodon::Base
+    NoBotRegex = /#?NoBot/i
+    
     # @!attribute [r] id
     #   @return [String]
     # @!attribute [r] username
@@ -65,6 +67,11 @@ module Mastodon
     def initialize(attributes = {})
       attributes.fetch('id')
       super
+    end
+
+    def no_bot?
+      note =~ NoBotRegex ||
+        fields.any? {|f| f.name =~ NoBotRegex || f.value =~ NoBotRegex}
     end
   end
 end
